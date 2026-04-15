@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garabny | جربني — Rent Smarter in Egypt</title>
+<meta name="description" content="Egypt's premier rental marketplace. Rent cameras, laptops, tools, gaming gear and more. Or earn money from items you already own.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Sora:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0A0A0F;
+  --surface: #111118;
+  --surface2: #16161F;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.12);
+  --text: #F2F0ED;
+  --text-muted: #8A8798;
+  --text-subtle: #4A4860;
+  --accent: #FF5C28;
+  --accent2: #FF8A5B;
+  --gold: #E8C547;
+  --green: #2ECC88;
+  --blue: #4F8EFF;
+  --gradient: linear-gradient(135deg, #FF5C28 0%, #FF8A5B 50%, #FFB347 100%);
+  --glow: 0 0 60px rgba(255,92,40,0.15);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body.rtl { direction: rtl; font-family: 'Noto Kufi Arabic', sans-serif; }
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* ─── NAVBAR ─── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10,10,15,0.7);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+  background: rgba(10,10,15,0.95);
+  border-color: var(--border2);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 38px; height: 38px;
+  background: var(--gradient);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: white;
+  box-shadow: 0 4px 20px rgba(255,92,40,0.4);
+}
+
+.logo-text {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.logo-ar {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: 14px;
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-ghost {
+  padding: 8px 20px;
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-primary {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 100px;
+  background: var(--gradient);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 20px rgba(255,92,40,0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(255,92,40,0.45);
+}
+
+.lang-toggle {
+  padding: 8px 16px;
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.lang-toggle:hover { color: var(--text); border-color: var(--accent); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+}
+
+.orb1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #FF5C28, transparent);
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #4F8EFF, transparent);
+  bottom: 0; left: -100px;
+  opacity: 0.08;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.orb3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, #E8C547, transparent);
+  bottom: 100px; right: -50px;
+  opacity: 0.06;
+  animation: float 12s ease-in-out infinite;
+}
+
+/* Grid lines background */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-30px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border: 1px solid rgba(255,92,40,0.3);
+  border-radius: 100px;
+  background: rgba(255,92,40,0.08);
+  font-size: 13px;
+  color: var(--accent2);
+  font-weight: 500;
+  margin-bottom: 32px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-headline {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: clamp(44px, 7vw, 88px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero-headline .accent { 
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-ar-sub {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: clamp(18px, 3vw, 28px);
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s 0.15s ease both;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  font-weight: 300;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn-large {
+  padding: 16px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 100px;
+}
+
+.btn-secondary-large {
+  padding: 15px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 100px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary-large:hover {
+  background: var(--surface);
+  border-color: var(--text-muted);
+}
+
+.hero-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.trust-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION BASE ─── */
+section {
+  padding: 100px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  font-size: 18px;
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ─── FLOATING ITEMS (HERO VISUAL) ─── */
+.hero-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 56px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.35s ease both;
+}
+
+.item-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.item-pill:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.item-pill span { font-size: 18px; }
+
+.price-tag {
+  background: rgba(46,204,136,0.1);
+  color: var(--green);
+  border-color: rgba(46,204,136,0.2);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid;
+  font-weight: 600;
+}
+
+/* ─── CATEGORIES ─── */
+.categories-wrap {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.categories-inner {
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.cat-card {
+  padding: 28px 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cat-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,92,40,0.2);
+}
+
+.cat-card:hover::before { opacity: 0.04; }
+
+.cat-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.cat-name {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.cat-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  position: relative;
+}
+
+.cat-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: rgba(232,197,71,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(232,197,71,0.2);
+}
+
+/* ─── HOW IT WORKS ─── */
+.hiw-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.hiw-side {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hiw-side::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+}
+
+.hiw-side.renters::after { background: var(--gradient); }
+.hiw-side.owners::after { background: linear-gradient(135deg, #2ECC88, #4F8EFF); }
+
+.hiw-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.hiw-label.renters { color: var(--accent); }
+.hiw-label.owners { color: var(--green); }
+
+.hiw-step {
+  display: flex;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hiw-step:last-child { border-bottom: none; padding-bottom: 0; }
+
+.step-num {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.renters .step-num {
+  background: rgba(255,92,40,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(255,92,40,0.2);
+}
+
+.owners .step-num {
+  background: rgba(46,204,136,0.1);
+  color: var(--green);
+  border: 1px solid rgba(46,204,136,0.2);
+}
+
+.step-body h4 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.step-body p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── PAIN SECTION ─── */
+.pain-wrap {
+  background: linear-gradient(135deg, rgba(255,92,40,0.04) 0%, transparent 60%);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pain-list { list-style: none; }
+
+.pain-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pain-item:last-child { border-bottom: none; }
+
+.pain-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(255,92,40,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.pain-text strong {
+  display: block;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.pain-text span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.solution-block { text-align: center; }
+
+.solution-circle {
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  box-shadow: 0 0 80px rgba(255,92,40,0.3);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: white;
+  line-height: 1.2;
+}
+
+.solution-circle .ar {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: 28px;
+}
+
+.solution-block h3 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.solution-block p {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── CALCULATOR ─── */
+.calc-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.calc-inner {
+  padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+  margin-bottom: 40px;
+}
+
+.earn-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.earn-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.earn-card .item-emoji { font-size: 40px; margin-bottom: 16px; display: block; }
+
+.earn-card h4 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.earn-card .rate {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.earn-amount {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.earn-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.earn-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.earn-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 2px;
+  transition: width 1.5s ease;
+}
+
+/* ─── WHY US ─── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.why-card {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+  transform: translateY(-2px);
+}
+
+.why-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.why-card h4 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.testi-card {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.testi-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+
+.testi-quote {
+  font-size: 40px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: serif;
+  margin-bottom: 16px;
+}
+
+.testi-card p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.author-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+/* ─── STATS ─── */
+.stats-wrap {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 24px;
+}
+
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.stat-item { text-align: center; }
+
+.stat-num {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 52px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ─── CTA BANNER ─── */
+.cta-banner {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 80px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(255,92,40,0.08), transparent);
+}
+
+.cta-banner h2 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.cta-banner .ar-sub {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: 20px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.cta-banner p {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  position: relative;
+  font-weight: 300;
+}
+
+.cta-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 60px 24px 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.footer-col h5 {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--text); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-subtle);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.social-icon:hover {
+  border-color: var(--accent);
+  background: rgba(255,92,40,0.08);
+}
+
+.city-flags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ─── MOBILE NAV ─── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 24px;
+  z-index: 800;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+
+.mobile-nav a:hover { color: var(--text); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .pain-wrap { grid-template-columns: 1fr; padding: 40px; }
+  .calc-grid { grid-template-columns: 1fr 1fr; }
+  .hiw-wrap { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-right .btn-ghost, .nav-right .btn-primary { display: none; }
+  .hamburger { display: flex; }
+  .calc-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  section { padding: 60px 20px; }
+  .pain-wrap { padding: 28px; }
+  .cta-banner { padding: 48px 28px; }
+  .footer-links { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── RTL OVERRIDES ─── */
+body.rtl .nav-links { flex-direction: row-reverse; }
+body.rtl .hero-badge { flex-direction: row-reverse; }
+body.rtl .trust-item { flex-direction: row-reverse; }
+body.rtl .hiw-step { flex-direction: row-reverse; }
+body.rtl .pain-item { flex-direction: row-reverse; }
+body.rtl .why-icon { margin-right: 0; }
+body.rtl .testi-author { flex-direction: row-reverse; }
+body.rtl .footer-bottom { flex-direction: row-reverse; }
+body.rtl .footer-top { direction: rtl; }
+</style>
+</head>
+
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">G</div>
+    <div>
+      <div class="logo-text">Garabny</div>
+      <div class="logo-ar">جربني</div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#categories">Browse</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#earn">Earn Money</a></li>
+    <li><a href="#cities">Cities</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="lang-toggle" id="langToggle">العربية</button>
+    <a href="#" class="btn-ghost">Sign In</a>
+    <a href="#" class="btn-primary">List Your Item →</a>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#categories">Browse Items</a>
+  <a href="#how-it-works">How It Works</a>
+  <a href="#earn">Earn Money</a>
+  <a href="#">Sign In</a>
+  <a href="#" class="btn-primary" style="border-radius:100px; text-align:center;">List Your Item</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" style="max-width:100%; padding-left:0; padding-right:0;">
+  <div class="hero-bg">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span>🇪🇬 Now launching across Egypt</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Why buy it<br><span class="accent">for one day?</span>
+    </h1>
+
+    <p class="hero-ar-sub" data-en="Rent smarter. Own smarter." data-ar="أوفر وأذكى. جرب قبل ما تشتري">
+      Rent smarter. <span style="color: var(--accent)">أوفر وأذكى</span>
+    </p>
+
+    <p class="hero-sub" data-en="Rent cameras, tools, laptops, gaming gear, event equipment and more across Egypt. Or earn money by listing items you already own." data-ar="استأجر كاميرات وأدوات ولابتوبات وأجهزة ألعاب ومعدات فعاليات في مصر — أو اكسب فلوس من أغراضك الموجودة عندك.">
+      Rent cameras, tools, laptops, gaming gear, event equipment and more across Egypt.<br>
+      Or earn money by listing items you already own.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#categories" class="btn-primary btn-large">Browse Items</a>
+      <a href="#earn" class="btn-secondary-large">
+        <span>💰</span> Start Earning
+      </a>
+    </div>
+
+    <!-- Floating item pills -->
+    <div class="hero-items">
+      <div class="item-pill"><span>📷</span> Camera — <span class="price-tag">150 EGP/day</span></div>
+      <div class="item-pill"><span>🎮</span> Gaming PC — <span class="price-tag">200 EGP/day</span></div>
+      <div class="item-pill"><span>🔧</span> Drill Set — <span class="price-tag">80 EGP/day</span></div>
+      <div class="item-pill"><span>🎙️</span> Mic & Speakers — <span class="price-tag">120 EGP/day</span></div>
+      <div class="item-pill"><span>💻</span> Laptop — <span class="price-tag">180 EGP/day</span></div>
+    </div>
+
+    <!-- Trust badges -->
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        <span data-en="Verified Users" data-ar="مستخدمين موثقين">Verified Users</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <span data-en="Secure Payments" data-ar="مدفوعات آمنة">Secure Payments</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        <span data-en="Fast Support" data-ar="دعم سريع">Fast Support</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🛡️</div>
+        <span data-en="Insured Items" data-ar="أغراض مؤمنة">Insured Items</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CATEGORIES ── -->
+<div class="categories-wrap" id="categories">
+  <div class="categories-inner">
+    <div class="reveal">
+      <div class="section-tag" data-en="BROWSE ALL" data-ar="تصفح الكل">BROWSE ALL</div>
+      <h2 class="section-title" data-en="Everything you need,<br>rented in minutes" data-ar="كل اللي محتاجه<br>استأجره في دقايق">
+        Everything you need,<br>rented in minutes
+      </h2>
+    </div>
+
+    <div class="categories-grid">
+      <div class="cat-card reveal reveal-delay-1">
+        <div class="cat-icon">📷</div>
+        <div class="cat-name" data-en="Cameras & Gear" data-ar="كاميرات ومعدات">Cameras & Gear</div>
+        <div class="cat-count" data-en="DSLRs, mirrorless, lenses, lights" data-ar="DSLR، ميرورلس، عدسات، إضاءة">DSLRs, lenses, lights</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-2">
+        <div class="cat-icon">🎮</div>
+        <div class="cat-name" data-en="Gaming PCs & Consoles" data-ar="أجهزة ألعاب ولابتوبات">Gaming PCs & Consoles</div>
+        <div class="cat-count" data-en="High-end rigs, PS5, Xbox" data-ar="أجهزة عالية المستوى، PS5، Xbox">High-end rigs, PS5, Xbox</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-3">
+        <div class="cat-icon">🔧</div>
+        <div class="cat-name" data-en="Tools & Equipment" data-ar="أدوات ومعدات">Tools & Equipment</div>
+        <div class="cat-count" data-en="Drills, saws, construction gear" data-ar="حفارات، منشار، معدات بناء">Drills, saws, construction gear</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-1">
+        <div class="cat-icon">🎙️</div>
+        <div class="cat-name" data-en="Speakers & Projectors" data-ar="سماعات وبروجيكتور">Speakers & Projectors</div>
+        <div class="cat-count" data-en="Events, weddings, presentations" data-ar="فعاليات، أفراح، عروض">Events, weddings, presentations</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-2">
+        <div class="cat-icon">💻</div>
+        <div class="cat-name" data-en="Laptops & Tech" data-ar="لابتوبات وتكنولوجيا">Laptops & Tech</div>
+        <div class="cat-count" data-en="MacBooks, workstations, tablets" data-ar="ماك بوك، محطات عمل، تابلت">MacBooks, workstations, tablets</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-3">
+        <div class="cat-icon">🎉</div>
+        <div class="cat-name" data-en="Event Supplies" data-ar="مستلزمات فعاليات">Event Supplies</div>
+        <div class="cat-count" data-en="Tables, chairs, decor, tents" data-ar="طاولات، كراسي، ديكور، خيام">Tables, chairs, decor, tents</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-1">
+        <div class="cat-icon">🚲</div>
+        <div class="cat-name" data-en="Bikes & Mobility" data-ar="دراجات وتنقل">Bikes & Mobility</div>
+        <div class="cat-count" data-en="Bicycles, scooters, e-bikes" data-ar="دراجات، سكوترات، دراجات كهربائية">Bicycles, scooters, e-bikes</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-2">
+        <div class="cat-badge">Soon</div>
+        <div class="cat-icon">✨</div>
+        <div class="cat-name" data-en="Luxury Experiences" data-ar="تجارب فاخرة">Luxury Experiences</div>
+        <div class="cat-count" data-en="Premium gear, exclusive items" data-ar="معدات فاخرة، أغراض حصرية">Premium gear, exclusive items</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="how-it-works" style="max-width:1200px;">
+  <div class="reveal">
+    <div class="section-tag" data-en="HOW IT WORKS" data-ar="كيف يعمل">HOW IT WORKS</div>
+    <h2 class="section-title" data-en="Simple on both sides" data-ar="بسيط من الجانبين">Simple on both sides</h2>
+    <p class="section-sub" data-en="Whether you're renting or listing, Garabny is built for speed and trust." data-ar="سواء كنت تستأجر أو تعلن، Garabny مصمم للسرعة والثقة.">Whether you're renting or listing, Garabny is built for speed and trust.</p>
+  </div>
+
+  <div class="hiw-wrap">
+    <!-- For Renters -->
+    <div class="hiw-side renters reveal reveal-delay-1">
+      <div class="hiw-label renters" data-en="FOR RENTERS" data-ar="للمستأجرين">FOR RENTERS</div>
+      <div class="hiw-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4 data-en="Search what you need" data-ar="ابحث عما تحتاجه">Search what you need</h4>
+          <p data-en="Browse hundreds of verified items near you across Egypt." data-ar="تصفح مئات الأغراض الموثقة بالقرب منك في مصر.">Browse hundreds of verified items near you across Egypt.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4 data-en="Book instantly" data-ar="احجز فورًا">Book instantly</h4>
+          <p data-en="Pick your dates, pay securely, confirm in seconds." data-ar="اختر مواعيدك وادفع بأمان وتأكيد في ثوانٍ.">Pick your dates, pay securely, confirm in seconds.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4 data-en="Use it" data-ar="استخدمه">Use it</h4>
+          <p data-en="Pick up locally or get it delivered. Use it freely." data-ar="استلمه من المالك أو وصله لحد. استخدمه بحرية.">Pick up locally or get it delivered. Use it freely.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4 data-en="Return easily" data-ar="أرجعه بسهولة">Return easily</h4>
+          <p data-en="Hand it back, leave a review. Done. Save thousands." data-ar="أرجعه واترك تقييم. خلصت. وفّر آلاف الجنيهات.">Hand it back, leave a review. Done. Save thousands.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- For Owners -->
+    <div class="hiw-side owners reveal reveal-delay-2">
+      <div class="hiw-label owners" data-en="FOR OWNERS" data-ar="للملاك">FOR OWNERS</div>
+      <div class="hiw-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4 data-en="Upload your item" data-ar="ارفع الغرضة بتاعتك">Upload your item</h4>
+          <p data-en="Add photos, set your price and availability. Takes 3 minutes." data-ar="أضف صور وحدد سعرك وإمتى متاح. بياخد 3 دقايق.">Add photos, set your price and availability. Takes 3 minutes.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4 data-en="Approve bookings" data-ar="وافق على الحجوزات">Approve bookings</h4>
+          <p data-en="Review renter profiles, verify identity, approve with one tap." data-ar="راجع بروفايل المستأجر وتحقق من هويته واوافق بضغطة واحدة.">Review renter profiles, verify identity, approve with one tap.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4 data-en="Hand it over safely" data-ar="سلمه بأمان">Hand it over safely</h4>
+          <p data-en="Secure deposit protects you. Your item is insured." data-ar="تأمين مضمون يحميك. الغرضة بتاعتك مؤمنة.">Secure deposit protects you. Your item is insured.</p>
+        </div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4 data-en="Get paid monthly" data-ar="اتقبض شهريًا">Get paid monthly</h4>
+          <p data-en="Earnings transferred directly to your account. Passive income, no effort." data-ar="أرباحك تتحول مباشرة لحسابك. دخل إضافي بدون مجهود.">Earnings transferred directly. Passive income, no effort.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY EGYPT NEEDS GARABNY ── -->
+<div style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 24px;">
+  <div class="pain-wrap" style="border:none; background:transparent; padding:0; max-width:1100px;">
+    <div>
+      <div class="section-tag reveal" data-en="THE PROBLEM" data-ar="المشكلة">THE PROBLEM</div>
+      <h2 class="section-title reveal" data-en="Egypt's economy is<br>changing. Are you?" data-ar="اقتصاد مصر بيتغير.<br>هل أنت كمان؟">
+        Egypt's economy is<br>changing. Are you?
+      </h2>
+
+      <ul class="pain-list" style="margin-top: 32px;">
+        <li class="pain-item reveal">
+          <div class="pain-icon">💸</div>
+          <div class="pain-text">
+            <strong data-en="Equipment prices keep rising" data-ar="أسعار المعدات بترتفع">Equipment prices keep rising</strong>
+            <span data-en="Cameras, tools, laptops cost months of salary." data-ar="الكاميرات والأدوات واللابتوبات بتتكلف شهور راتب.">Cameras, tools, laptops cost months of salary.</span>
+          </div>
+        </li>
+        <li class="pain-item reveal">
+          <div class="pain-icon">📦</div>
+          <div class="pain-text">
+            <strong data-en="Most items are used once or twice" data-ar="أغلب الأغراض بتتستخدم مرة أو اتنين">Most items are used once or twice</strong>
+            <span data-en="Then they sit collecting dust for years." data-ar="وبعدين بتفضل على الرف سنين.">Then they sit collecting dust for years.</span>
+          </div>
+        </li>
+        <li class="pain-item reveal">
+          <div class="pain-icon">🔨</div>
+          <div class="pain-text">
+            <strong data-en="Buying tools for one project is wasteful" data-ar="شراء أدوات لمشروع واحد تبذير">Buying tools for one project is wasteful</strong>
+            <span data-en="Why spend 5,000 EGP on equipment for one weekend?" data-ar="ليه تصرف 5000 جنيه على معدات لويكند واحد؟">Why spend 5,000 EGP for one weekend?</span>
+          </div>
+        </li>
+        <li class="pain-item reveal">
+          <div class="pain-icon">😩</div>
+          <div class="pain-text">
+            <strong data-en="Thousands of valuable items sit unused" data-ar="آلاف الأغراض القيمة بتفضل غير مستخدمة">Thousands of valuable items sit unused</strong>
+            <span data-en="While others desperately need them." data-ar="وفي ناس تانية محتاجاها بشدة.">While others desperately need them.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="solution-block reveal">
+      <div class="solution-circle">
+        <span class="ar">جربني</span>
+      </div>
+      <h3 data-en="Garabny turns waste into value" data-ar="جربني بيحول التبذير لقيمة">Garabny turns waste into value</h3>
+      <p data-en="Connect people who have with people who need. Save money. Make money. Build community." data-ar="بنوصل اللي عنده بيحتاج. وفّر فلوس. اكسب فلوس. ابني مجتمع.">
+        Connect people who have with people who need.<br>Save money. Make money. Build community.
+      </p>
+      <br>
+      <a href="#categories" class="btn-primary" style="margin-top: 8px;">Start Saving Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── EARN CALCULATOR ── -->
+<div class="calc-section" id="earn">
+  <div class="calc-inner">
+    <div class="reveal" style="text-align: center; margin-bottom: 48px;">
+      <div class="section-tag" data-en="EARN MONTHLY" data-ar="اكسب شهريًا">EARN MONTHLY</div>
+      <h2 class="section-title" data-en="Your idle items are<br>worth real money" data-ar="أغراضك العاطلة تساوي<br>فلوس حقيقية">Your idle items are<br>worth real money</h2>
+      <p class="section-sub" style="margin: 0 auto;" data-en="See how much your items could earn every month on Garabny." data-ar="شوف قد إيه أغراضك ممكن تكسب كل شهر على جربني.">See how much your items could earn every month on Garabny.</p>
+    </div>
+
+    <div class="calc-grid">
+      <div class="earn-card reveal reveal-delay-1">
+        <span class="item-emoji">📷</span>
+        <h4 data-en="Camera + Lens Kit" data-ar="كاميرا + طقم عدسات">Camera + Lens Kit</h4>
+        <p class="rate" data-en="Rented ~20 days/month at 225 EGP/day" data-ar="مأجرة ~20 يوم/شهر بـ225 جنيه/يوم">Rented ~20 days/month at 225 EGP/day</p>
+        <div class="earn-bar"><div class="earn-fill" style="width: 75%" data-width="75"></div></div>
+        <div class="earn-amount" data-count="4500">4,500</div>
+        <div class="earn-label" data-en="EGP per month" data-ar="جنيه في الشهر">EGP per month</div>
+      </div>
+
+      <div class="earn-card reveal reveal-delay-2">
+        <span class="item-emoji">🎮</span>
+        <h4 data-en="Gaming PC Setup" data-ar="جهاز جيمنج">Gaming PC Setup</h4>
+        <p class="rate" data-en="Rented ~25 days/month at 240 EGP/day" data-ar="مأجر ~25 يوم/شهر بـ240 جنيه/يوم">Rented ~25 days/month at 240 EGP/day</p>
+        <div class="earn-bar"><div class="earn-fill" style="width: 90%" data-width="90"></div></div>
+        <div class="earn-amount" data-count="6000">6,000</div>
+        <div class="earn-label" data-en="EGP per month" data-ar="جنيه في الشهر">EGP per month</div>
+      </div>
+
+      <div class="earn-card reveal reveal-delay-3">
+        <span class="item-emoji">🔧</span>
+        <h4 data-en="Power Tool Set" data-ar="طقم أدوات كهربائية">Power Tool Set</h4>
+        <p class="rate" data-en="Rented ~18 days/month at 100 EGP/day" data-ar="مأجر ~18 يوم/شهر بـ100 جنيه/يوم">Rented ~18 days/month at 100 EGP/day</p>
+        <div class="earn-bar"><div class="earn-fill" style="width: 55%" data-width="55"></div></div>
+        <div class="earn-amount" data-count="1800">1,800</div>
+        <div class="earn-label" data-en="EGP per month" data-ar="جنيه في الشهر">EGP per month</div>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="#" class="btn-primary btn-large">
+        List My Item & Start Earning
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHY CHOOSE US ── -->
+<section style="max-width:1200px;">
+  <div class="reveal">
+    <div class="section-tag" data-en="WHY GARABNY" data-ar="ليه جربني">WHY GARABNY</div>
+    <h2 class="section-title" data-en="Built for Egypt,<br>built for trust" data-ar="مبني لمصر،<br>مبني على الثقة">Built for Egypt,<br>built for trust</h2>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon" style="background: rgba(255,92,40,0.1);">💰</div>
+      <h4 data-en="Way cheaper than buying" data-ar="أرخص بكتير من الشراء">Way cheaper than buying</h4>
+      <p data-en="Rent for a fraction of the purchase price. Save 90% on single-use items." data-ar="استأجر بجزء بسيط من سعر الشراء. وفّر 90% على الأغراض اللي بتستخدمها مرة.">Rent for a fraction of the purchase price. Save 90% on single-use items.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon" style="background: rgba(79,142,255,0.1);">✅</div>
+      <h4 data-en="Verified renters & owners" data-ar="مستأجرين وملاك موثقين">Verified renters & owners</h4>
+      <p data-en="National ID verification, ratings, and review system for every user." data-ar="التحقق من الهوية والتقييمات ونظام مراجعة لكل مستخدم.">National ID verification, ratings, and review system for every user.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon" style="background: rgba(46,204,136,0.1);">🛡️</div>
+      <h4 data-en="Secure deposits & insurance" data-ar="تأمينات آمنة وضمان">Secure deposits & insurance</h4>
+      <p data-en="Protected by deposit system and item insurance. Owners and renters both covered." data-ar="محمي بنظام تأمين وتأمين الأغراض. الملاك والمستأجرين كلهم مغطيين.">Protected by deposit system and item insurance.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon" style="background: rgba(232,197,71,0.1);">📅</div>
+      <h4 data-en="Flexible rental periods" data-ar="فترات إيجار مرنة">Flexible rental periods</h4>
+      <p data-en="Rent by the day, week, or month. No long commitments required." data-ar="استأجر باليوم أو الأسبوع أو الشهر. مفيش التزامات طويلة.">Rent by the day, week, or month. No long commitments required.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon" style="background: rgba(255,92,40,0.1);">🚚</div>
+      <h4 data-en="Local pickup or delivery" data-ar="استلام محلي أو توصيل">Local pickup or delivery</h4>
+      <p data-en="Choose what works for you. Meet nearby or get it delivered to your door." data-ar="اختار اللي يناسبك. قابل حد قريب أو استلم على بابك.">Choose what works. Pickup or home delivery.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon" style="background: rgba(79,142,255,0.1);">🇪🇬</div>
+      <h4 data-en="Proudly Egyptian" data-ar="مصري بفخر">Proudly Egyptian</h4>
+      <p data-en="Built for Egypt's economy, culture, and community. Arabic-first support." data-ar="مبني لاقتصاد مصر وثقافتها ومجتمعها. دعم أولوية العربية.">Built for Egypt's economy and community. Arabic-first support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section style="max-width:1200px;">
+  <div class="reveal">
+    <div class="section-tag" data-en="REAL STORIES" data-ar="قصص حقيقية">REAL STORIES</div>
+    <h2 class="section-title" data-en="Egyptians love Garabny" data-ar="المصريين بيحبوا جربني">Egyptians love Garabny</h2>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p data-en="Needed a camera for my graduation project. Borrowed one for 3 days and saved over 8,000 EGP. The owner was verified and super helpful." data-ar="محتاج كاميرا لمشروع تخرجي. استأجرت وأحد لمدة 3 أيام ووفرت أكتر من 8000 جنيه.">
+        Needed a camera for my graduation project. Borrowed one for 3 days and saved over 8,000 EGP. The owner was verified and super helpful.
+      </p>
+      <div class="testi-author">
+        <div class="author-avatar">🧑‍🎓</div>
+        <div>
+          <div class="author-name">Ahmed Khalil</div>
+          <div class="author-meta" data-en="Engineering Student, Cairo" data-ar="طالب هندسة، القاهرة">Engineering Student, Cairo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p data-en="My old power tools were just sitting there. Listed them on Garabny and now they earn me an extra 2,500 EGP every month without any effort." data-ar="أدواتي القديمة كانت بس واقفة. حطيتهم على جربني ودلوقتي بيجيبوا 2500 جنيه إضافية كل شهر.">
+        My old power tools were just sitting there. Listed them on Garabny and now they earn me an extra 2,500 EGP every month without any effort.
+      </p>
+      <div class="testi-author">
+        <div class="author-avatar">👷</div>
+        <div>
+          <div class="author-name">Mostafa Sayed</div>
+          <div class="author-meta" data-en="Contractor, Giza" data-ar="مقاول، الجيزة">Contractor, Giza</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="stars">★★★★★</div>
+      <div class="testi-quote">"</div>
+      <p data-en="Booked a full speaker and lighting system for my sister's engagement in under 20 minutes. Perfect quality, fair price. Will use again!" data-ar="حجزت نظام سماعات وإضاءة كامل لخطوبة أختي في أقل من 20 دقيقة. جودة ممتازة وسعر معقول.">
+        Booked a full speaker and lighting system for my sister's engagement in under 20 minutes. Perfect quality, fair price. Will use again!
+      </p>
+      <div class="testi-author">
+        <div class="author-avatar">👩</div>
+        <div>
+          <div class="author-name">Nour Hassan</div>
+          <div class="author-meta" data-en="Event Organizer, Alexandria" data-ar="منظمة فعاليات، الإسكندرية">Event Organizer, Alexandria</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-wrap">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="1000">1,000+</div>
+      <div class="stat-label" data-en="Items Available" data-ar="غرضة متاحة">Items Available</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num" data-count="500">500+</div>
+      <div class="stat-label" data-en="Verified Users" data-ar="مستخدم موثق">Verified Users</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num">95%</div>
+      <div class="stat-label" data-en="Satisfaction Rate" data-ar="معدل رضا">Satisfaction Rate</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num">4</div>
+      <div class="stat-label" data-en="Egyptian Cities" data-ar="مدن مصرية" id="cities">Egyptian Cities</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CITY COVERAGE ── -->
+<section style="max-width:1200px; text-align:center;">
+  <div class="reveal">
+    <div class="section-tag" data-en="AVAILABLE IN" data-ar="متاح في">AVAILABLE IN</div>
+    <h2 class="section-title" data-en="Launching across Egypt" data-ar="بنطلق في كل مصر">Launching across Egypt</h2>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
+    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-1">
+      🏙️ <span data-en="Cairo" data-ar="القاهرة">Cairo</span>
+    </div>
+    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-2">
+      🌆 <span data-en="Giza" data-ar="الجيزة">Giza</span>
+    </div>
+    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-3">
+      🌊 <span data-en="Alexandria" data-ar="الإسكندرية">Alexandria</span>
+    </div>
+    <div style="padding: 16px 32px; background: rgba(255,92,40,0.08); border: 1px solid rgba(255,92,40,0.3); border-radius: 100px; font-weight: 600; font-size: 16px; color: var(--accent); display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-4">
+      🌴 <span data-en="Fayoum" data-ar="الفيوم">Fayoum</span>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px; color: var(--text-muted); font-size: 14px;" class="reveal" data-en="More cities coming soon →" data-ar="مدن أكتر قريبًا →">More cities coming soon →</p>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<div style="padding: 0 24px 80px;">
+  <div class="cta-banner reveal">
+    <h2 data-en="Own something useful?<br><span class='accent'>Let it pay for itself.</span>" data-ar="عندك غرضة مفيدة؟<br><span class='accent'>خليها تدفع عن نفسها.</span>">
+      Own something useful?<br><span class="accent">Let it pay for itself.</span>
+    </h2>
+    <p class="ar-sub" data-en="" data-ar="جرب قبل ما تشتري — أوفر وأذكى">جرب قبل ما تشتري — أوفر وأذكى</p>
+    <p data-en="Join thousands of Egyptians renting and earning smarter." data-ar="انضم لآلاف المصريين اللي بيستأجروا ويكسبوا بذكاء.">Join thousands of Egyptians renting and earning smarter.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary btn-large">List My Item →</a>
+      <a href="#categories" class="btn-secondary-large">Browse Rentals</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom: 16px; display: flex;">
+          <div class="logo-mark">G</div>
+          <div style="margin-left: 10px;">
+            <div class="logo-text">Garabny</div>
+            <div class="logo-ar">جربني</div>
+          </div>
+        </a>
+        <p data-en="Egypt's trusted rental marketplace. Rent what you need. Earn from what you own." data-ar="سوق الإيجار الموثوق في مصر. استأجر اللي محتاجه. اكسب من اللي عندك.">
+          Egypt's trusted rental marketplace.<br>Rent what you need. Earn from what you own.
+        </p>
+        <div class="city-flags" style="margin-top: 20px;">
+          🇪🇬 Cairo · Giza · Alexandria · Fayoum
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5 data-en="Product" data-ar="المنتج">Product</h5>
+          <a href="#" data-en="Browse Items" data-ar="تصفح الأغراض">Browse Items</a>
+          <a href="#" data-en="List an Item" data-ar="أعلن عن غرضة">List an Item</a>
+          <a href="#" data-en="How It Works" data-ar="كيف يعمل">How It Works</a>
+          <a href="#" data-en="Pricing" data-ar="الأسعار">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Trust & Safety" data-ar="الأمان والثقة">Trust & Safety</h5>
+          <a href="#" data-en="Safety Guide" data-ar="دليل الأمان">Safety Guide</a>
+          <a href="#" data-en="Verification" data-ar="التوثيق">Verification</a>
+          <a href="#" data-en="Insurance" data-ar="التأمين">Insurance</a>
+          <a href="#" data-en="Deposits" data-ar="التأمينات">Deposits</a>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Company" data-ar="الشركة">Company</h5>
+          <a href="#" data-en="About Us" data-ar="عنا">About Us</a>
+          <a href="#" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="#" data-en="Careers" data-ar="وظائف">Careers</a>
+          <a href="#" data-en="Press" data-ar="الإعلام">Press</a>
+        </div>
+        <div class="footer-col">
+          <h5 data-en="Support" data-ar="الدعم">Support</h5>
+          <a href="#" data-en="Help Center" data-ar="مركز المساعدة">Help Center</a>
+          <a href="#" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+          <a href="#" data-en="Terms of Service" data-ar="شروط الخدمة">Terms of Service</a>
+          <a href="#" data-en="Privacy Policy" data-ar="سياسة الخصوصية">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-en="© 2025 Garabny. Made in Egypt 🇪🇬" data-ar="© 2025 جربني. صنع في مصر 🇪🇬">© 2025 Garabny. Made in Egypt 🇪🇬</span>
+      <div class="social-icons">
+        <a href="#" class="social-icon">𝕏</a>
+        <a href="#" class="social-icon">in</a>
+        <a href="#" class="social-icon">📱</a>
+        <a href="#" class="social-icon">📸</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── NAVBAR SCROLL ───
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ─── HAMBURGER ───
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+});
+
+// ─── LANGUAGE TOGGLE ───
+let isArabic = false;
+const langToggle = document.getElementById('langToggle');
+
+function switchLang(ar) {
+  document.body.classList.toggle('rtl', ar);
+  langToggle.textContent = ar ? 'English' : 'العربية';
+
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    const key = ar ? 'data-ar' : 'data-en';
+    const val = el.getAttribute(key);
+    if (val) {
+      el.innerHTML = val;
+    }
+  });
+}
+
+langToggle.addEventListener('click', () => {
+  isArabic = !isArabic;
+  switchLang(isArabic);
+});
+
+// ─── SCROLL REVEAL ───
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+reveals.forEach(el => revealObserver.observe(el));
+
+// ─── EARN BAR ANIMATION ───
+const earnCards = document.querySelectorAll('.earn-fill');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fill = entry.target;
+      const width = fill.getAttribute('data-width') || fill.style.width;
+      fill.style.width = '0%';
+      setTimeout(() => { fill.style.width = width + '%'; }, 300);
+      barObserver.unobserve(fill);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.earn-fill').forEach(bar => {
+  bar.style.width = '0%';
+  barObserver.observe(bar);
+});
+
+// ─── SMOOTH HOVER PARALLAX ON HERO ORBS ───
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  const orb1 = document.querySelector('.orb1');
+  if (orb1) {
+    orb1.style.transform = `translateX(calc(-50% + ${x}px)) translateY(${y}px)`;
+  }
+});
+</script>
+</body>
+</html>
