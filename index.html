@@ -11,21 +11,21 @@
 
 <style>
 :root {
-  --bg: #0A0A0F;
-  --surface: #111118;
-  --surface2: #16161F;
-  --border: rgba(255,255,255,0.06);
-  --border2: rgba(255,255,255,0.12);
-  --text: #F2F0ED;
-  --text-muted: #8A8798;
-  --text-subtle: #4A4860;
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --surface2: #F3F2EE;
+  --border: rgba(0,0,0,0.07);
+  --border2: rgba(0,0,0,0.14);
+  --text: #181510;
+  --text-muted: #6B6760;
+  --text-subtle: #B0ADA7;
   --accent: #FF5C28;
-  --accent2: #FF8A5B;
-  --gold: #E8C547;
-  --green: #2ECC88;
-  --blue: #4F8EFF;
+  --accent2: #E04A18;
+  --gold: #C8962A;
+  --green: #1AAD6B;
+  --blue: #2E6EE0;
   --gradient: linear-gradient(135deg, #FF5C28 0%, #FF8A5B 50%, #FFB347 100%);
-  --glow: 0 0 60px rgba(255,92,40,0.15);
+  --glow: 0 0 60px rgba(255,92,40,0.12);
   --radius: 20px;
   --radius-sm: 12px;
 }
@@ -53,7 +53,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1000;
-  opacity: 0.4;
+  opacity: 0.15;
 }
 
 /* ─── SCROLLBAR ─── */
@@ -73,13 +73,13 @@ body::before {
   justify-content: space-between;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background: rgba(10,10,15,0.7);
+  background: rgba(250,250,248,0.85);
   border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
 }
 
 .nav.scrolled {
-  background: rgba(10,10,15,0.95);
+  background: rgba(250,250,248,0.98);
   border-color: var(--border2);
 }
 
@@ -109,6 +109,7 @@ body::before {
   font-weight: 800;
   font-size: 22px;
   color: var(--text);
+  line-height: 1.1;
 }
 
 .logo-ar {
@@ -133,7 +134,7 @@ body::before {
   transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--text); }
+.nav-links a:hover { color: var(--accent); }
 
 .nav-right {
   display: flex;
@@ -160,6 +161,7 @@ body::before {
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
+  background: rgba(255,92,40,0.05);
 }
 
 .btn-primary {
@@ -189,7 +191,7 @@ body::before {
   padding: 8px 16px;
   border: 1px solid var(--border2);
   border-radius: 100px;
-  background: transparent;
+  background: var(--surface);
   color: var(--text-muted);
   font-size: 13px;
   cursor: pointer;
@@ -197,7 +199,7 @@ body::before {
   font-family: inherit;
 }
 
-.lang-toggle:hover { color: var(--text); border-color: var(--accent); }
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); background: rgba(255,92,40,0.05); }
 
 /* ─── HERO ─── */
 .hero {
@@ -209,6 +211,7 @@ body::before {
   padding: 120px 24px 80px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #FFF9F6 0%, #FAFAF8 100%);
 }
 
 .hero-bg {
@@ -221,7 +224,7 @@ body::before {
   position: absolute;
   border-radius: 50%;
   filter: blur(120px);
-  opacity: 0.12;
+  opacity: 0.18;
 }
 
 .orb1 {
@@ -236,15 +239,15 @@ body::before {
   width: 400px; height: 400px;
   background: radial-gradient(circle, #4F8EFF, transparent);
   bottom: 0; left: -100px;
-  opacity: 0.08;
+  opacity: 0.10;
   animation: float 10s ease-in-out infinite reverse;
 }
 
 .orb3 {
   width: 300px; height: 300px;
-  background: radial-gradient(circle, #E8C547, transparent);
+  background: radial-gradient(circle, #FFB347, transparent);
   bottom: 100px; right: -50px;
-  opacity: 0.06;
+  opacity: 0.12;
   animation: float 12s ease-in-out infinite;
 }
 
@@ -253,8 +256,8 @@ body::before {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
 }
@@ -276,9 +279,9 @@ body::before {
   align-items: center;
   gap: 8px;
   padding: 6px 16px;
-  border: 1px solid rgba(255,92,40,0.3);
+  border: 1px solid rgba(255,92,40,0.25);
   border-radius: 100px;
-  background: rgba(255,92,40,0.08);
+  background: rgba(255,92,40,0.06);
   font-size: 13px;
   color: var(--accent2);
   font-weight: 500;
@@ -305,6 +308,7 @@ body::before {
   line-height: 1.0;
   letter-spacing: -0.03em;
   margin-bottom: 8px;
+  color: var(--text);
   animation: fadeUp 0.6s 0.1s ease both;
 }
 
@@ -356,7 +360,7 @@ body::before {
   font-weight: 600;
   border-radius: 100px;
   border: 1px solid var(--border2);
-  background: transparent;
+  background: var(--surface);
   color: var(--text);
   cursor: pointer;
   transition: all 0.2s;
@@ -365,11 +369,13 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
 .btn-secondary-large:hover {
-  background: var(--surface);
-  border-color: var(--text-muted);
+  background: var(--surface2);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .hero-trust {
@@ -379,7 +385,7 @@ body::before {
   gap: 32px;
   margin-top: 56px;
   padding-top: 40px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border2);
   flex-wrap: wrap;
   animation: fadeUp 0.6s 0.4s ease both;
 }
@@ -396,7 +402,8 @@ body::before {
 .trust-icon {
   width: 28px; height: 28px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,92,40,0.08);
+  border: 1px solid rgba(255,92,40,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,6 +439,7 @@ section {
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
+  color: var(--text);
 }
 
 .section-sub {
@@ -459,26 +467,28 @@ section {
   gap: 10px;
   padding: 10px 18px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border2);
   border-radius: 100px;
   font-size: 14px;
   color: var(--text-muted);
   font-weight: 500;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .item-pill:hover {
   border-color: var(--accent);
   color: var(--text);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,92,40,0.12);
 }
 
 .item-pill span { font-size: 18px; }
 
 .price-tag {
-  background: rgba(46,204,136,0.1);
+  background: rgba(26,173,107,0.1);
   color: var(--green);
-  border-color: rgba(46,204,136,0.2);
+  border-color: rgba(26,173,107,0.25);
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 100px;
@@ -488,7 +498,7 @@ section {
 
 /* ─── CATEGORIES ─── */
 .categories-wrap {
-  background: var(--surface);
+  background: var(--surface2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -508,14 +518,15 @@ section {
 
 .cat-card {
   padding: 28px 20px;
-  background: var(--bg);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 1px solid var(--border2);
   border-radius: var(--radius);
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .cat-card::before {
@@ -530,7 +541,7 @@ section {
 .cat-card:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,92,40,0.2);
+  box-shadow: 0 16px 40px rgba(255,92,40,0.12), 0 0 0 1px rgba(255,92,40,0.15);
 }
 
 .cat-card:hover::before { opacity: 0.04; }
@@ -563,9 +574,9 @@ section {
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 100px;
-  background: rgba(232,197,71,0.15);
+  background: rgba(200,150,42,0.1);
   color: var(--gold);
-  border: 1px solid rgba(232,197,71,0.2);
+  border: 1px solid rgba(200,150,42,0.25);
 }
 
 /* ─── HOW IT WORKS ─── */
@@ -578,11 +589,12 @@ section {
 
 .hiw-side {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border2);
   border-radius: var(--radius);
   padding: 40px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
 .hiw-side::after {
@@ -629,15 +641,15 @@ section {
 }
 
 .renters .step-num {
-  background: rgba(255,92,40,0.1);
+  background: rgba(255,92,40,0.08);
   color: var(--accent);
   border: 1px solid rgba(255,92,40,0.2);
 }
 
 .owners .step-num {
-  background: rgba(46,204,136,0.1);
+  background: rgba(26,173,107,0.08);
   color: var(--green);
-  border: 1px solid rgba(46,204,136,0.2);
+  border: 1px solid rgba(26,173,107,0.2);
 }
 
 .step-body h4 {
@@ -655,8 +667,8 @@ section {
 
 /* ─── PAIN SECTION ─── */
 .pain-wrap {
-  background: linear-gradient(135deg, rgba(255,92,40,0.04) 0%, transparent 60%);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(255,92,40,0.03) 0%, transparent 60%);
+  border: 1px solid var(--border2);
   border-radius: 28px;
   padding: 64px;
   display: grid;
@@ -666,6 +678,7 @@ section {
   margin-top: 0;
   max-width: 1200px;
   margin: 0 auto;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
 }
 
 .pain-list { list-style: none; }
@@ -683,7 +696,8 @@ section {
 .pain-icon {
   width: 36px; height: 36px;
   border-radius: 10px;
-  background: rgba(255,92,40,0.08);
+  background: rgba(255,92,40,0.06);
+  border: 1px solid rgba(255,92,40,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -714,7 +728,7 @@ section {
   align-items: center;
   justify-content: center;
   margin: 0 auto 32px;
-  box-shadow: 0 0 80px rgba(255,92,40,0.3);
+  box-shadow: 0 20px 60px rgba(255,92,40,0.35), 0 4px 20px rgba(255,92,40,0.2);
   font-family: 'Cabinet Grotesk', sans-serif;
   font-weight: 900;
   font-size: 22px;
@@ -742,7 +756,7 @@ section {
 
 /* ─── CALCULATOR ─── */
 .calc-section {
-  background: var(--surface);
+  background: var(--surface2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -762,19 +776,20 @@ section {
 }
 
 .earn-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 1px solid var(--border2);
   border-radius: var(--radius);
   padding: 32px 28px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .earn-card:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 16px 40px rgba(255,92,40,0.12);
 }
 
 .earn-card .item-emoji { font-size: 40px; margin-bottom: 16px; display: block; }
@@ -810,7 +825,7 @@ section {
 
 .earn-bar {
   height: 4px;
-  background: var(--border);
+  background: rgba(0,0,0,0.08);
   border-radius: 2px;
   margin: 16px 0;
   overflow: hidden;
@@ -834,15 +849,17 @@ section {
 .why-card {
   padding: 32px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border2);
   border-radius: var(--radius);
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .why-card:hover {
-  border-color: var(--border2);
-  background: var(--surface2);
+  border-color: var(--accent);
+  background: var(--surface);
   transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255,92,40,0.10);
 }
 
 .why-icon {
@@ -879,22 +896,24 @@ section {
 .testi-card {
   padding: 32px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border2);
   border-radius: var(--radius);
   position: relative;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .testi-card:hover {
-  border-color: var(--border2);
+  border-color: var(--accent);
   transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255,92,40,0.10);
 }
 
 .testi-quote {
   font-size: 40px;
   line-height: 1;
   color: var(--accent);
-  opacity: 0.3;
+  opacity: 0.25;
   font-family: serif;
   margin-bottom: 16px;
 }
@@ -921,7 +940,7 @@ section {
   justify-content: center;
   font-size: 18px;
   background: var(--surface2);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border2);
 }
 
 .author-name {
@@ -935,7 +954,7 @@ section {
 }
 
 .stars {
-  color: var(--gold);
+  color: #D4A017;
   font-size: 13px;
   letter-spacing: 2px;
   margin-bottom: 16px;
@@ -943,9 +962,9 @@ section {
 
 /* ─── STATS ─── */
 .stats-wrap {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: #FFFFFF;
+  border-top: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
   padding: 64px 24px;
 }
 
@@ -979,8 +998,8 @@ section {
 
 /* ─── CTA BANNER ─── */
 .cta-banner {
-  background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #FFF5F2 0%, #FFFBF8 60%, #FFF8F0 100%);
+  border: 1px solid rgba(255,92,40,0.15);
   border-radius: 28px;
   padding: 80px 48px;
   text-align: center;
@@ -988,13 +1007,14 @@ section {
   overflow: hidden;
   max-width: 1200px;
   margin: 0 auto 100px;
+  box-shadow: 0 4px 30px rgba(255,92,40,0.08);
 }
 
 .cta-banner::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(255,92,40,0.08), transparent);
+  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(255,92,40,0.06), transparent);
 }
 
 .cta-banner h2 {
@@ -1034,8 +1054,8 @@ section {
 
 /* ─── FOOTER ─── */
 footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  background: var(--surface2);
+  border-top: 1px solid var(--border2);
   padding: 60px 24px 40px;
 }
 
@@ -1050,7 +1070,7 @@ footer {
   gap: 60px;
   margin-bottom: 48px;
   padding-bottom: 48px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border2);
 }
 
 .footer-brand p {
@@ -1081,14 +1101,14 @@ footer {
   transition: color 0.2s;
 }
 
-.footer-col a:hover { color: var(--text); }
+.footer-col a:hover { color: var(--accent); }
 
 .footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-  color: var(--text-subtle);
+  color: var(--text-muted);
   flex-wrap: wrap;
   gap: 16px;
 }
@@ -1100,19 +1120,21 @@ footer {
 
 .social-icon {
   width: 36px; height: 36px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border2);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   text-decoration: none;
+  color: var(--text-muted);
   transition: all 0.2s;
 }
 
 .social-icon:hover {
   border-color: var(--accent);
-  background: rgba(255,92,40,0.08);
+  background: rgba(255,92,40,0.06);
+  color: var(--accent);
 }
 
 .city-flags {
@@ -1163,12 +1185,13 @@ footer {
   display: none;
   position: fixed;
   top: 72px; left: 0; right: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border2);
   padding: 24px;
   z-index: 800;
   flex-direction: column;
   gap: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
 
 .mobile-nav.open { display: flex; }
@@ -1183,7 +1206,7 @@ footer {
   transition: color 0.2s;
 }
 
-.mobile-nav a:hover { color: var(--text); }
+.mobile-nav a:hover { color: var(--accent); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
@@ -1460,7 +1483,7 @@ body.rtl .footer-top { direction: rtl; }
 </section>
 
 <!-- ── WHY EGYPT NEEDS GARABNY ── -->
-<div style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 24px;">
+<div style="background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 24px;">
   <div class="pain-wrap" style="border:none; background:transparent; padding:0; max-width:1100px;">
     <div>
       <div class="section-tag reveal" data-en="THE PROBLEM" data-ar="المشكلة">THE PROBLEM</div>
@@ -1686,13 +1709,13 @@ body.rtl .footer-top { direction: rtl; }
   </div>
 
   <div style="display: flex; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap;">
-    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-1">
+    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border2); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);" class="reveal reveal-delay-1">
       🏙️ <span data-en="Cairo" data-ar="القاهرة">Cairo</span>
     </div>
-    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-2">
+    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border2); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);" class="reveal reveal-delay-2">
       🌆 <span data-en="Giza" data-ar="الجيزة">Giza</span>
     </div>
-    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-3">
+    <div style="padding: 16px 32px; background: var(--surface); border: 1px solid var(--border2); border-radius: 100px; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);" class="reveal reveal-delay-3">
       🌊 <span data-en="Alexandria" data-ar="الإسكندرية">Alexandria</span>
     </div>
     <div style="padding: 16px 32px; background: rgba(255,92,40,0.08); border: 1px solid rgba(255,92,40,0.3); border-radius: 100px; font-weight: 600; font-size: 16px; color: var(--accent); display: flex; align-items: center; gap: 10px;" class="reveal reveal-delay-4">
